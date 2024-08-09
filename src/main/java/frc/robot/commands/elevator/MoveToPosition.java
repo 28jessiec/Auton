@@ -1,6 +1,10 @@
 package frc.robot.commands.elevator;
 
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Timer;\
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
+import frc.robot.util.commands.IndefiniteCommand;
+import frc.robot.subsystems.AngledElevator;
 
 /**
  * ==================================
@@ -9,7 +13,7 @@ import edu.wpi.first.wpilibj.Timer;
  * What methods do we need?
  * ==================================
  */
-public class MoveToPosition /* TODO: extends what? */ {
+public class MoveToPosition extends CommandBase/* TODO: extends what? */ {
 
     private double position;
     private final Timer timer = new Timer();

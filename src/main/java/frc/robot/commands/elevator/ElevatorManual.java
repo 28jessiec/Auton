@@ -1,5 +1,11 @@
 package frc.robot.commands.elevator;
 
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
+import frc.robot.util.commands.IndefiniteCommand;
+import frc.robot.subsystems.AngledElevator;
+
+
 /**
  * ==================================
  * Remember what needs to be extended
@@ -7,7 +13,7 @@ package frc.robot.commands.elevator;
  * What methods do we need?
  * ==================================
  */
-public class ElevatorManual /* TODO: extends what? */ {
+public class ElevatorManual extends CommandBase/* TODO: extends what? */ {
 
     /**
      * =====================================
@@ -15,6 +21,10 @@ public class ElevatorManual /* TODO: extends what? */ {
      * =====================================
      */
     // TODO: function here [delete this comment]
+    private ElevatorManual()
+    {
+        addRequirements(AngledElevator.getInstance());
+    }
     
     public void execute() {
         /**
@@ -24,6 +34,16 @@ public class ElevatorManual /* TODO: extends what? */ {
          * ================================================================================
          */
         // TODO: code here [delete this comment]
+        if (OI.getInstance().getOperator().getUpDPadButtonState())
+        {
+            AngledElevator.getInstance().setPosition(AngledElevator.getInstance().getPosition() + 500);
+        }
+        else if (OI.getInstance().getOperator().getDownDPadButtonState())
+        {
+            AngledElevator.getInstance().setPosition(AngledElevator.getInstance().getPosition() - 500);
+        }
+        
+        
 
         /**
          * ==========================================
@@ -31,6 +51,7 @@ public class ElevatorManual /* TODO: extends what? */ {
          * ==========================================
          */
         // TODO: code here [delete this comment]
+        AngledElevator.getInstance().moveToPosition(AngledElevator.getInstance().getPosition());
     }
 
     /**
@@ -40,4 +61,9 @@ public class ElevatorManual /* TODO: extends what? */ {
      * =======================
      */
     // TODO: function here [delete this comment]
+    @Override
+    public void end(boolean interrupted)
+    {
+        AngledElevator.getInstance().setElevatorPower(0);
+    }
 }

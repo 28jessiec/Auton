@@ -1,5 +1,8 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.util.XboxGamepad;
+
 public class OI {
     private static OI instance;
 
@@ -15,6 +18,9 @@ public class OI {
      */
     // TODO: function and variables here [delete this comment]
 
+    private XboxGamepad driver;
+    private XboxGamepad operator;
+
     /**
      * ==============================================
      * Getter (Accessor) for the driver instance var.
@@ -22,6 +28,10 @@ public class OI {
      * @return the driver instance
      */
     // TODO: function here [delete this comment]
+    public XboxGamepad getDriver()
+    {
+        return driver;
+    }
 
     /**
      * ================================================
@@ -30,6 +40,10 @@ public class OI {
      * @return the operator instance
      */
     // TODO: function here [delete this comment]
+     public XboxGamepad getOperator()
+    {
+        return operator;
+    }
 
     /**
      * ==============
@@ -39,4 +53,13 @@ public class OI {
      * @return instance of OI
      */
     // TODO: function here [delete this comment]
+    public static OI getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new OI();
+
+        }
+        return instance;
+    }
 }
